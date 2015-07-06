@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sample Slides</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="decky.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/solarized_light.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  </head>
+  <body>
+    <section>
+      <h1>Scratch that Itch</h1>
+      <h2>Command-line Node for fun and profit</h2>
+    </section>
+    <section>
+      <h1>Scratch that Itch</h1>
+      <h2>Command-line Node for fun<s> and profit</s></h2>
+    </section>
+    <section>
+      <h1>Hello!</h1>
+    </section>
+    <section>
+      <img src="img/me.jpg">
+    </section>
+    <section>
+      <img src="img/mozilla.png">
+    </section>
+    <section>
+      <img src="img/php1.png">
+    </section>
+    <section>
+      <img src="img/php2.png">
+    </section>
+    <section>
+      <img src="img/phpzoom1.png">
+    </section>
+    <section>
+      <img src="img/phpzoom2.png">
+    </section>
+    <section>
+      <img class="contain" src="img/worth_the_time.png">
+    </section>
+    <section>
+      <img class="cover" src="img/workspace.png">
+    </section>
+    <section>
+      <iframe class="contain" src="https://en.wikipedia.org/wiki/List_of_fictional_bears"></iframe>
+    </section>
+    <section>
+      <img src="img/pratt.png">
+    </section>
+    <section>
+      <img src="img/pratt2.png">
+    </section>
+    <section>
+      <h1>Do One Thing Well</h1>
+    </section>
+    <section>
+      <h1>DOTW</h1>
+    </section>
+    <section>
+      <img class="hero" src="img/heman.jpg">
+    </section>
+    <section>
+      <img class="hero" src="img/gate.jpg">
+    </section>
+    <section>
+      <img classs="hero" src="img/onebox.png">
+    </section>
+    <section>
+      <img src="img/results.png">
+    </section>
+    <section>
+      <img src="img/flightaware.png">
+    </section>
+    <section>
+      <img src="img/column.png">
+    </section>
+    <section>
+      <img src="img/progress.png">
+      <h1>😍</h1>
+    </section>
+    <section>
+      <img class="hero" src="img/devtools.png">
+    </section>
+    <section>
+      <img class="hero" src="img/httpnodeget.png">
+    </section>
+    <section>
+      <img src="img/requestnpm.png">
+    </section>
+    <section>
+      <pre><code class="javascript">
+var request = require('request');
+request('http://www.google.com', function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    console.log(body) // Show the HTML for the Google homepage.
+  }
+});
+      </code></pre>
+    </section>
+    <section>
+      <pre><code class="javascript">
+var request = require('request');
+var cheerio = require('cheerio');
+request(
+  'http://flightaware.com/live/flight/UAL1750',
+  function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var $ = cheerio.load(body);
+      // Showtime!
+    }
+  }
+);
+      </code></pre>
+    </section>
+    <section>
+      <pre><code class="javascript">
+var table = $('.track-panel-data');
+var trs = table.find('tr');
+trs.each(function (i) {
+  var header = trs.eq(i).find('th').text().trim().toLowerCase();
+  var val = trs.eq(i).find('td').contents().first().text().trim();
+  data[header] = val;
+});
+      </code></pre>
+    </section>
+    <section>
+      <pre><code class="javascript">
+var origin = $('.track-panel-departure .hint').attr('title');
+var destination = $('.track-panel-arrival .hint').attr('title');
+var times = $('.track-panel-actualtime');
+var departure = times.eq(0);
+if (departure.children().first().hasClass('flightStatusGood')) {
+  departure = chalk.green(departure.text().trim());
+} else {
+  departure = chalk.red(departure.text().trim());
+}
+var arrival = times.eq(1);
+if (arrival.children().first().hasClass('flightStatusGood')) {
+  arrival = chalk.green(arrival.text().trim());
+} else {
+  arrival = chalk.red(arrival.text().trim());
+}
+      </code></pre>
+    </section>
+    <section>
+      <pre><code class="nohighlight">
+Status:    Arrived over an hour ago.
+Departure: 06:50PM EDT
+           Philadelphia Intl (Philadelphia, PA) - KPHL
+Arrival:   09:00PM PDT
+           San Francisco Intl (San Francisco, CA) - KSFO
+      </code></pre>
+    </section>
+    <section>
+      <pre><code class="nohighlight">
+ [------------------------------------✈                                       ]
+                         46 min elapsed, 47 min left
+      </code></pre>
+    </section>
+    <section>
+      <pre><code class="nohighlight">
+ [------------------------------------✈                                       ]
+                         46 min elapsed, 47 min left
+
+         1         2         3         4         5         6         7         8
+---------|---------|---------|---------|---------|---------|---------|---------|
+      </code></pre>
+    </section>
+    <section>
+      <pre><code class="nohighlight">
+% node
+> process.stdout.columns
+80
+      </code></pre>
+    </section>
+    <section>
+      <pre><code class="nohighlight">
+Status:    Arrived over an hour ago.
+Departure: 06:50PM EDT
+           Philadelphia Intl (Philadelphia, PA) - KPHL
+Arrival:   09:00PM PDT
+           San Francisco Intl (San Francisco, CA) - KSFO
+
+ [------------------------------------✈                                       ]
+                         46 min elapsed, 47 min left
+      </code></pre>
+    </section>
+    <section>
+      <img classs="hero" src="img/onebox.png">
+    </section>
+    <section>
+      <img classs="hero" src="img/colorout.png">
+    </section>
+    <section>
+      <h2>Is This</h2>
+      <pre><code>
+&lt;div class="before">
+  VITAL INFORMATION
+&lt;/div>
+
+&lt;div class="after">
+  VITAL INFORMATION
+&lt;/div>
+      </code></pre>
+    </section>
+    <section>
+      <h2>Isn't really less brittle than</h2>
+      <pre><code class="javascript">
+{
+  "before": "VITAL INFORMATION"
+}
+
+{
+  "after": "VITAL INFORMATION"
+}
+      </code></pre>
+    </section>
+    <section>
+      <ol start="5">
+        <li>
+          <i>You will not access the FlightAware web site in any way that intentionally affects or significantly negatively impacts the performance or reliability of the FlightAware web site.</i>
+        </li>
+      </ol>
+    </section>
+    <section>
+      <h1>Accessibility</h1>
+    </section>
+    <section>
+      <h1>a11y</h1>
+    </section>
+    <section>
+      <h1>a11y, m10r.</h1>
+    </section>
+    <section>
+      <center>
+        ABIOGENICALLY ABORIGINALITY ABSORBABILITY ABSTRACTIVELY ACCEPTABILITY ACCESSIBILITY ACCIDENTALITY ACCIDENTOLOGY ACHROMATICITY ACQUIESCENTLY ACQUIESCINGLY ACQUIRABILITY ACQUISITIVELY ACRIMONIOUSLY ACROBATICALLY ACRONYMICALLY ACTINOBIOLOGY ACTINOTHERAPY ADDITIONALITY ADENOIDECTOMY ADIABATICALLY ADIATHERMANCY ADJUSTABILITY ADMISSIBILITY ADMONISHINGLY ADRENALECTOMY ADSORBABILITY ADUMBRATIVELY ADVENTUROUSLY ADVERSATIVELY AEROLITHOLOGY AESTHETICALLY AFFECTABILITY AFFECTIONALLY AFFIRMATIVELY AFFORDABILITY AGGRAVATINGLY AGGREGATIVELY AGONISTICALLY AGRONOMICALLY ALCOHOLICALLY ALCOHOLOMETRY ALGEBRAICALLY ALGOLOGICALLY ALLEGORICALLY ALLERGENICITY ALLOTYPICALLY ALTERNATIVELY ALUMINOTHERMY AMBIDEXTERITY AMBISEXUALITY AMPHIDIPLOIDY ANACHRONOUSLY ANAEROBICALLY ANALYZABILITY ANAPHORICALLY ANECDOTICALLY ANFRACTUOSITY ANSWERABILITY ANTHROPOLATRY ANTHROPOMETRY ANTHROPOPATHY ANTHROPOPHAGY ANTHROPOSOPHY ANTIAUTHORITY ANTIFERTILITY ANTIGENICALLY ANTINOMICALLY ANTIOBSCENITY ANTISEXUALITY ANTISOCIALITY ANTITYPICALLY APATHETICALLY APERIODICALLY APLANATICALLY APODICTICALLY APOLITICALITY APOMICTICALLY APOSTOLICALLY APPEALABILITY APPELLATIVELY APPLICABILITY APPLICATIVELY APPREHENSIBLY APPROPINQUITY APPROPRIATELY APPROXIMATELY APTITUDINALLY ARCHAEOBOTANY ARCHAEZOOLOGY ARCHEOZOOLOGY ARTERIOGRAPHY ARTHRITICALLY ARTIFICIALITY ASCERTAINABLY ASSIGNABILITY ASSOCIABILITY ASSOCIATIVELY ASSOCIATIVITY ASSORTATIVELY ASTHMATICALLY ASTONISHINGLY ASYNDETICALLY ATAVISTICALLY ATHEISTICALLY ATHEMATICALLY ATOMISTICALLY ATTAINABILITY ATTITUDINALLY ATTRIBUTIVELY AUDIOVISUALLY AUTHENTICALLY AUTOBIOGRAPHY AUTOMATICALLY AUTONOMICALLY AUTOSTABILITY AVOCATIONALLY AXIOLOGICALLY AXIOMATICALLY
+      </center>
+    </section>
+    <section>
+      <h1>
+        <code>[letter][number][letter]</code>
+      <h1>
+    </section>
+    <section>
+      <h1>Accessibility</h1>
+    </section>
+    <section>
+      <h1>A<span style="color: blue">ccessibilit</span>y</h1>
+    </section>
+    <section>
+      <h1><i>Coding Time</i></h1>
+    </section>
+    <section>
+      <h1>Thanks!</h1>
+    </section>
+    <script src="decky.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
