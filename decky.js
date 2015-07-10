@@ -61,7 +61,7 @@ var decky = (function () {
   }
   api.next = nextSlide;
 
-  function gotoSlide(n) {
+  function gotoSlide(n, notified) {
     // clamp value to slide range
     n = Math.max(1, Math.min(slides.length, n));
     // are we actually changing slides?
@@ -87,6 +87,14 @@ var decky = (function () {
     });
 
     api.onSlideChange(current);
+    if (!notified) {
+      speaker.postMessage({type: 'goto', num: current});
+      if (window.top !== window) {
+        window.top.postMessage({
+          type: 'goto', num: current
+        }, '*');
+      }
+    }
   }
 
   function toggleFullScreen() {
@@ -97,6 +105,18 @@ var decky = (function () {
     }
   }
   api.fullScreen = toggleFullScreen;
+
+  var speaker = new BroadcastChannel("speaker");
+
+  speaker.onmessage = handleMessage;
+  window.onmessage = handleMessage;
+
+  function handleMessage(event) {
+    var msg = event.data;
+    if (msg.type === 'goto') {
+      gotoSlide(msg.num, true);
+    }
+  }
 
   window.addEventListener('hashchange', function(e) {
     e.preventDefault();

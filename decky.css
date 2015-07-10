@@ -178,6 +178,7 @@ blink {
   transition: 1s width ease-out;
   background: #000;
   width: 0%;
+  border-radius: 1rem;
 }
 .talk-progress {
   bottom: 1vh;

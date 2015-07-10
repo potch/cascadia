@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style>
+      iframe {
+        border: 0;
+      }
+      .main {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .next {
+        width: 20vw;
+        height: 20vh;
+        position: absolute;
+        top: 5vw;
+        right: 5vw;
+        border: 1px solid black;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe class="main" src="index.html"></iframe>
+    <iframe class="next" src="index.html"></iframe>
+    <script>
+      var main = document.querySelector('.main');
+      var next = document.querySelector('.next');
+      window.onmessage = function (event) {
+        var msg = event.data;
+        if (msg.type === 'goto') {
+          next.contentWindow.postMessage({
+            type: 'goto',
+            num: msg.num + 1
+          }, '*');
+        }
+        console.log(event.data);
+      }
+      main.contentWindow.focus();
+    </script>
+  </body>
+</html>

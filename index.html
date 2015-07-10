@@ -51,7 +51,7 @@ __      ___| |_| |__    _| |_        F        }
       </pre>
       <h1>Hello!</h1>
     </section>
-    <section>
+    <section style="background: #444;">
       <img src="img/mozilla_wordmark.svg">
     </section>
     <section>
@@ -71,6 +71,9 @@ __      ___| |_| |__    _| |_        F        }
     </section>
     <section>
       <img src="img/phpzoom2.png">
+    </section>
+    <section>
+      <img src="img/php.png">
     </section>
     <section>
       <img class="contain" src="img/bears.png">
@@ -103,6 +106,9 @@ __      ___| |_| |__    _| |_        F        }
       <img class="contain" src="img/worth_the_time.png">
     </section>
     <section>
+      <img class="contain" src="img/worth_the_time_zoom.png">
+    </section>
+    <section>
       <pre class="term nowid" style="font-size: 5em; padding: 1.1em 3em">> <blink>_</blink></pre>
     </section>
     <section>
@@ -127,20 +133,18 @@ __      ___| |_| |__    _| |_        F        }
       <h1 sub style="color: #80BD01; font-weight: normal; position: relative; font-size: 10em">⬢</h1>
     </section>
     <section class="center" style="font-size: 1.5em; line-height: 1.5em;">
-      <div sub=1>
-        <code>stdin</code>
-        <div>☟</div>
-      </div>
-      <pre class="term" style="padding: 1rem 0;"><code class="nohighlight" style="font-size:1em;">%> rm -rfi /</code></pre>
+      <pre class="term" style="padding: 1rem 0;"><code class="nohighlight" style="font-size:1em;">%> rm <span sub>-rfi /</span></code></pre>
       <div sub=3>
         <div>☟</div>
         <code>stdout, stderr</code>
       </div>
     </section>
     <section>
+      <img src="img/process.png">
+    </section>
+    <section>
       <h1><code>process</code></h1>
       <ul>
-        <li><code>process.stdin</code>
         <li><code>process.stdout <span sub>☞ console.log</span></code>
         <li><code>process.stderr <span sub>☞ console.error</span></code>
       </ul>
@@ -152,6 +156,9 @@ __      ___| |_| |__    _| |_        F        }
     </section>
     <section>
       <img class="hero" src="img/heman.jpg">
+    </section>
+    <section>
+      <img class="hero" src="img/ironman.jpg">
     </section>
     <section>
       <img class="hero" src="img/ketchup.gif">
@@ -405,6 +412,16 @@ AFFIRMATIVELY
       </div>
     </section>
     <section>
+      <pre class="term center">> a9r --random a11y</pre>
+      <h2 sub><code>process.argv</code></h2>
+      <pre sub class="term center">[ "--random", "a11y" ]</pre>
+    </section>
+    <section>
+      <pre class="term center">> a9r a11y --random</pre>
+      <h2 sub><code>process.argv</code></h2>
+      <pre sub class="term center">[ "a11y", "--random" ]</pre>
+    </section>
+    <section>
       <img class="cover" src="img/nomnom.png">
     </section>
     <section>
@@ -480,6 +497,13 @@ query = query.toUpperCase(); // A11Y
       <h1><code>npm link</code></h1>
     </section>
     <section>
+      <h1><code>npm link</code></h1>
+      <pre class="term"><code class="nohighlight">
+/usr/local/bin/a9r -> /usr/local/lib/node_modules/a9r/index.js
+/usr/local/lib/node_modules/a9r -> /Users/potch/projects/a9r
+      </code></pre>
+    </section>
+    <section>
       <pre class="term nowid" style="font-size: 5em; padding: 1.1em 3em">> <blink>_</blink></pre>
     </section>
     <section>
@@ -527,12 +551,17 @@ query = query.toUpperCase(); // A11Y
           timer = setInterval(update, 100);
           sTime = Date.now();
           console.log('starting timer');
+        } else {
+          going = false;
+          clearInterval(timer);
+          sTime = Date.now();
+          update();
         }
         var pct = (n / decky.num * 100) + '%';
         talkProgress.style.width = pct;
       };
       function update() {
-        var time = ((Date.now() - sTime) / (20 * 60 * 1000)) * 100 + '%';
+        var time = ((Date.now() - sTime) / (25 * 60 * 1000)) * 100 + '%';
         timeProgress.style.width = time;
       }
     </script>
