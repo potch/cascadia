@@ -6,6 +6,11 @@ var decky = (function () {
   var currentSlide = slides[current-1];
   var subSlide = 0;
 
+  var api = {
+    onSlideChange: function () {},
+    num: numSlides
+  };
+
   function arr(o, offset) {
     return Array.prototype.slice.call(o, offset || 0);
   }
@@ -43,6 +48,7 @@ var decky = (function () {
   function prevSlide() {
     gotoSlide(current - 1);
   }
+  api.prev = prevSlide;
 
   function nextSlide() {
     subSlide++;
@@ -53,6 +59,7 @@ var decky = (function () {
       gotoSlide(current + 1);
     }
   }
+  api.next = nextSlide;
 
   function gotoSlide(n) {
     // clamp value to slide range
@@ -78,6 +85,8 @@ var decky = (function () {
         slide.classList.remove('active');
       }
     });
+
+    api.onSlideChange(current);
   }
 
   function toggleFullScreen() {
@@ -87,6 +96,7 @@ var decky = (function () {
       body.mozRequestFullScreen();
     }
   }
+  api.fullScreen = toggleFullScreen;
 
   window.addEventListener('hashchange', function(e) {
     e.preventDefault();
@@ -110,10 +120,6 @@ var decky = (function () {
 
   gotoSlide(parseInt(window.location.hash.substr(1), 10) || 1);
 
-  return {
-      next: nextSlide,
-      prev: prevSlide,
-      fullScreen: toggleFullScreen
-  };
+  return api;
 
 })();

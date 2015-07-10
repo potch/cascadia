@@ -12,7 +12,8 @@ body {
   overflow: hidden;
   font-size: 4vw;
   background: #000;
-  font-family: sans-serif;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
 }
 
 section {
@@ -25,7 +26,7 @@ section {
   left: 0;
   right: 0;
   display: none;
-  background: #fff;
+  background: #f8f8f8;
   padding: 1em;
   padding-bottom: 2em;
 
@@ -40,6 +41,8 @@ h1 {
 
 h1, h2, h3, h4 {
   margin-top: 0;
+  text-align: center;
+  margin-bottom: 0;
 }
 
 @media (min-aspect-ratio: 16/9) {
@@ -52,6 +55,10 @@ h1, h2, h3, h4 {
   }
 }
 
+.center {
+  text-align: center;
+}
+
 section.active {
   display: flex;
 }
@@ -59,7 +66,9 @@ section.active {
 section img {
   object-fit: contain;
   max-width: 100%;
-  flex: 1 1 auto;
+  max-height: 100%;
+  display: block;
+  flex: 1 1 100%;
 }
 
 section .cols {
@@ -104,6 +113,77 @@ section .cols > * + * {
   margin-left: 1em;
 }
 
-code {
+pre {
+  margin: 0;
+}
+
+pre code {
   font-size: .5em;
+  line-height: 1.2em;
+}
+
+h1:last-child {
+  margin: 0;
+}
+
+ul {
+  margin-top: 0;
+}
+
+.term {
+  background: #222;
+  color: #ddd;
+  white-space: pre;
+  width: 42ch;
+  margin: 0 1ch;
+  padding: 1ch;
+}
+.nowid {
+  width: auto;
+}
+.fw {
+  width: 100%;
+}
+.bigger {
+  font-size: 1.5em;
+}
+.pr {
+  position: relative;
+
+}
+.white {
+  color: white;
+}
+
+blink {
+  animation: 1s blink linear infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.progress {
+  position: absolute;
+  bottom: 0px;
+  height: .5vh;
+  transition: 1s width ease-out;
+  background: #000;
+  width: 0%;
+}
+.talk-progress {
+  bottom: 1vh;
+  background: #f00;
+}
+.time-progress {
+  bottom: .25vh;
+  background: #00f;
 }
